@@ -1,4 +1,4 @@
-Machine Learning Algorithms — Python Implementations
+## Machine Learning Algorithms — Python Implementations
 A clean, light, hands-on repository showcasing lightweight Python implementations of foundational Machine Learning, Deep Learning, and Reinforcement Learning algorithms. Built using small datasets and simple configurations, this project is ideal for quick local execution, self-study, and classroom demonstrations.
 
 📁 Project Structure
