@@ -85,7 +85,7 @@ Builds a minimal self-attention block from scratch: computes Query, Key, and Val
 - **Synthetic blob data**: generated via `sklearn.datasets.make_blobs` (`KMeans.py`).
 - **QLearning / Transformer**: no external dataset; environment/inputs are defined directly in the script.
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 This project demonstrates practical implementations of:
 
