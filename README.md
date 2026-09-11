@@ -85,20 +85,20 @@ Builds a minimal self-attention block from scratch: computes Query, Key, and Val
 - **Synthetic blob data**: generated via `sklearn.datasets.make_blobs` (`KMeans.py`).
 - **QLearning / Transformer**: no external dataset; environment/inputs are defined directly in the script.
 
-🎯 Learning Objectives
+## 🎯 Learning Objectives
 
 This project demonstrates practical implementations of:
 
-Classification
-Regression
-Clustering
-Ensemble Learning
-Gradient Boosting
-Reinforcement Learning
-Self-Attention
-Model Training and Prediction
-Model Evaluation
-Data Visualization
+- **Classification**
+- **Regression**
+- **Clustering**
+- **Ensemble Learning**
+- **Gradient Boosting**
+- **Reinforcement Learning**
+- **Self-Attention**
+- **Model Training and Prediction**
+- **Model Evaluation**
+- **Data Visualization**
 
 The examples are intentionally simple so that the underlying concepts and code flow can be understood easily.
 
