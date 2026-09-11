@@ -1,6 +1,9 @@
 Machine Learning Algorithms — Python Implementations
+A clean, light, hands-on repository showcasing lightweight Python implementations of foundational Machine Learning, Deep Learning, and Reinforcement Learning algorithms. Built using small datasets and simple configurations, this project is ideal for quick local execution, self-study, and classroom demonstrations.
 
-Applied Machine Learning Lab: Core Algorithms in PythonA clean, light, hands-on repository showcasing lightweight Python implementations of foundational Machine Learning, Deep Learning, and Reinforcement Learning algorithms. Built using small datasets and simple configurations, this project is ideal for quick local execution, self-study, and classroom demonstrations.📁 Project StructurePlaintextMachine Learning/
+📁 Project Structure
+
+Machine Learning/
 │
 ├── CatBoost.py
 ├── decision_tree.py
@@ -11,65 +14,105 @@ Applied Machine Learning Lab: Core Algorithms in PythonA clean, light, hands-on 
 ├── QLearning.py
 ├── Transformer.py
 └── XGBoost.py
-🧠 Algorithms IncludedProgramAlgorithmParadigmTask / Outputdecision_tree.pyDecision TreeSupervisedMulticlass Classificationlinear_regression.pyLinear RegressionSupervisedContinuous Value RegressionXGBoost.pyXGBoostSupervisedGradient Boosted Trees (Classification)lightGBM.pyLightGBMSupervisedFast Leaf-wise Gradient BoostingCatBoost.pyCatBoostSupervisedSymmetric Tree Gradient BoostingKMeans.pyK-MeansUnsupervisedCentroid-based ClusteringQLearning.pyQ-LearningReinforcementValue-based Policy OptimizationTransformer.pySelf-AttentionDeep LearningScaled Dot-Product Attention Mechanism🔬 Algorithm Breakdown1. Decision Tree (decision_tree.py)Concept: A supervised learning model that recursively partitions the feature space based on feature thresholds.Dataset: Iris Dataset (150 samples, 4 input features, 3 class labels).Split: 70% Training / 30% Testing.Workflow: Iris Dataset ➔ Train-Test Split ➔ Build Model ➔ Fit ➔ Predict ➔ Accuracy EvaluationPythonmodel = DecisionTreeClassifier()
-model.fit(X_train, y_train)
-prediction = model.predict(X_test)
-2. Linear Regression (linear_regression.py)Concept: Fits a best-line linear equation ($y = \beta_0 + \beta_1 x$) to model continuous target values.Dataset: Synthetic regression data (make_regression, 100 samples, 1 feature, noise = 15).Metric: Evaluated using Mean Squared Error (MSE). Lower MSE indicates closer predictions.Pythonmodel = LinearRegression()
-model.fit(X_train, y_train)
-prediction = model.predict(X_test)
-print("MSE =", mean_squared_error(y_test, prediction))
-3. XGBoost (XGBoost.py)Concept: Extreme Gradient Boosting, an optimized ensemble algorithm using tree-based boosting.Key Hyperparameters:n_estimators=100: Number of boosting trees.learning_rate=0.1: Step size shrinkage used to prevent overfitting.max_depth=3: Maximum depth of individual decision trees.Workflow: Iris Dataset ➔ Train-Test Split ➔ XGBoost Fit ➔ Predict ➔ Accuracy4. LightGBM (lightGBM.py)Concept: A fast, high-performance gradient boosting framework using leaf-wise tree growth.Dataset: Iris Dataset (Evaluated on classification accuracy).Note: Any printed messages regarding "No further splits with positive gain" are expected training warnings and do not affect successful execution.5. CatBoost (CatBoost.py)Concept: Gradient boosting using symmetric trees, designed to handle categorical and numerical features efficiently with minimal tuning.Key Hyperparameters: iterations=100, learning_rate=0.1, depth=3.Note: Configured with verbose=False to maintain clean terminal logs.6. K-Means Clustering (KMeans.py)Concept: An unsupervised algorithm that partitions unlabelled data into $K$ distinct clusters centered around centroids.Dataset: Artificial blob clusters via make_blobs ($N=300$, $K=3$).Workflow: Generate Blobs ➔ Select K=3 ➔ Fit & Predict Cluster Labels ➔ Extract Centroids ➔ Plot VisualizationPythonlabels = model.fit_predict(X)
-centroids = model.cluster_centers_
-7. Q-Learning (QLearning.py)Concept: A model-free reinforcement learning algorithm where an agent learns optimal actions through interaction and rewards within an environment.Environment:6 States ($0 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 4 \rightarrow 5$), where State 5 is the goal.2 Actions: 0 (Move Left), 1 (Move Right).Rewards: $+100$ at the goal, $-1$ per step otherwise.Parameters: Learning rate ($\alpha = 0.8$), Discount factor ($\gamma = 0.9$), trained over 500 episodes.Bellman Update:$$\mathcal{Q}(s,a) \leftarrow \mathcal{Q}(s,a) + \alpha \left[ r + \gamma \max_{a'} \mathcal{Q}(s',a') - \mathcal{Q}(s,a) \right]$$8. Self-Attention / Transformer (Transformer.py)Concept: Demonstrates the core Scaled Dot-Product Attention mechanism that drives modern Transformer architectures.Mechanism: Converts input vectors into Query ($Q$), Key ($K$), and Value ($V$) representations to compute contextual token relationships.$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$Pythonscores = torch.matmul(Q, K.T) / (d_k ** 0.5)
-attention = torch.softmax(scores, dim=-1)
-output = torch.matmul(attention, V)
-⚙️ Prerequisites & SetupEnsure Python is installed on your system. Install the project dependencies via pip:Bashpython -m pip install numpy scikit-learn matplotlib torch xgboost lightgbm catboost
-Verify your installation:Bashpython --version
-python -m pip --version
-▶️ Execution GuideNavigate to the project directory in your terminal or PowerShell prompt:Bashcd "path/to/Machine Learning"
-Run any script individually:Bashpython decision_tree.py
-python linear_regression.py
+
+## Contents
+
+| Script | Category | Description |
+|---|---|---|
+| `Linear_regression.py` | Regression | Fits a linear regression model on synthetic data (`make_regression`) and reports MSE. |
+| `Decision_tree.py` | Classification | Trains a `DecisionTreeClassifier` on the Iris dataset and reports accuracy. |
+| `XGBoost.py` | Classification (Gradient Boosting) | Trains an `XGBClassifier` on Iris using gradient-boosted trees. |
+| `LightGBM.py` | Classification (Gradient Boosting) | Trains an `LGBMClassifier` on Iris using LightGBM's gradient boosting framework. |
+| `CatBoost.py` | Classification (Gradient Boosting) | Trains a `CatBoostClassifier` on Iris using CatBoost's gradient boosting framework. |
+| `KMeans.py` | Clustering | Clusters synthetic blob data into 3 groups using K-Means and visualizes the clusters with matplotlib. |
+| `QLearning.py` | Reinforcement Learning | Implements tabular Q-learning on a simple 6-state, 2-action environment. |
+| `Transformer.py` | Deep Learning | Implements a minimal single-head self-attention (Transformer-style) mechanism from scratch using PyTorch. |
+
+## Requirements
+
+Install the dependencies before running any script:
+
+```bash
+pip install numpy scikit-learn matplotlib xgboost lightgbm catboost torch
+```
+
+> Note: Not every script needs every package — see the table below for per-script requirements.
+
+| Script | Dependencies |
+|---|---|
+| `Linear_regression.py` | `scikit-learn` |
+| `Decision_tree.py` | `scikit-learn` |
+| `XGBoost.py` | `scikit-learn`, `xgboost` |
+| `LightGBM.py` | `scikit-learn`, `lightgbm` |
+| `CatBoost.py` | `scikit-learn`, `catboost` |
+| `KMeans.py` | `scikit-learn`, `matplotlib` |
+| `QLearning.py` | `numpy` |
+| `Transformer.py` | `torch` |
+
+## Usage
+
+Each script can be run independently:
+
+```bash
+python Linear_regression.py
+python Decision_tree.py
 python XGBoost.py
-python lightGBM.py
+python LightGBM.py
 python CatBoost.py
 python KMeans.py
 python QLearning.py
 python Transformer.py
-💻 Hardware RequirementsLow Resource Overhead: All models rely on small synthetic datasets or lightweight benchmarks.RAM Usage: Runs comfortably on machines with $\le 4\text{ GB}$ RAM.GPU: Not required. The PyTorch attention example runs natively on standard CPU configurations without loading heavy pretrained LLM weights.
-📊 Learning Types
+```
 
-The programs demonstrate several major machine learning paradigms.
+## Script Details
 
-Supervised Learning
+### `Linear_regression.py`
+Generates a synthetic single-feature regression dataset, splits it into train/test sets, fits a `LinearRegression` model, and prints the mean squared error on the test set.
 
-The model learns from input data paired with known target values.
+### `Decision_tree.py`
+Loads the Iris dataset, splits it into train/test sets, fits a `DecisionTreeClassifier`, and prints the actual vs. predicted labels along with accuracy.
 
-Included:
+### `XGBoost.py`
+Same Iris classification setup as `Decision_tree.py`, but uses XGBoost's `XGBClassifier` (100 trees, depth 3, learning rate 0.1).
 
-Decision Tree
-Linear Regression
-XGBoost
-LightGBM
-CatBoost
-Unsupervised Learning
+### `LightGBM.py`
+Same Iris classification setup, using LightGBM's `LGBMClassifier` (100 estimators, depth 3, learning rate 0.1).
 
-The model discovers patterns or groups without using target labels.
+### `CatBoost.py`
+Same Iris classification setup, using CatBoost's `CatBoostClassifier` (100 iterations, depth 3, learning rate 0.1).
 
-Included:
+### `KMeans.py`
+Generates 300 synthetic points across 3 blobs (`make_blobs`), fits a `KMeans(n_clusters=3)` model, and plots the resulting clusters with their centroids (marked as stars):
 
-K-Means Clustering
+![KMeans clustering result](KMeans.png)
+
+### `QLearning.py`
+Implements tabular Q-learning over 500 episodes on a simple linear 6-state environment (states 0–5, goal state = 5). Learns and prints the final Q-table using a standard Bellman update with `alpha=0.8` and `gamma=0.9`.
+
+### `Transformer.py`
+Builds a minimal self-attention block from scratch: computes Query, Key, and Value projections for a 3-token sequence, calculates scaled dot-product attention scores, applies softmax, and produces the final attention-weighted output — a from-scratch illustration of the core mechanism behind Transformer models.
+
+## Dataset Sources
+
+- **Iris dataset**: loaded via `sklearn.datasets.load_iris` (used by `Decision_tree.py`, `XGBoost.py`, `LightGBM.py`, `CatBoost.py`).
+- **Synthetic regression data**: generated via `sklearn.datasets.make_regression` (`Linear_regression.py`).
+- **Synthetic blob data**: generated via `sklearn.datasets.make_blobs` (`KMeans.py`).
+- **QLearning / Transformer**: no external dataset; environment/inputs are defined directly in the script.
+
+🎯 Learning Objectives
+
+This project demonstrates practical implementations of:
+
+Classification
+Regression
+Clustering
+Ensemble Learning
+Gradient Boosting
 Reinforcement Learning
+Self-Attention
+Model Training and Prediction
+Model Evaluation
+Data Visualization
 
-An agent learns by taking actions and receiving rewards or penalties.
+The examples are intentionally simple so that the underlying concepts and code flow can be understood easily.
 
-Included:
-
-Q-Learning
-Deep Learning / Attention
-
-The program demonstrates the self-attention mechanism used in Transformer architectures.
-
-Included:
-
-Transformer / Self-Attention
-📊 Quick Comparison MatrixAlgorithmParadigmDataset / EnvironmentTask TypeEvaluation / OutputDecision TreeSupervisedIris DatasetMulticlass ClassificationClassification AccuracyLinear RegressionSupervisedSynthetic (make_regression)Continuous RegressionMean Squared Error (MSE)XGBoostSupervisedIris DatasetEnsemble ClassificationClassification AccuracyLightGBMSupervisedIris DatasetLeaf-wise Gradient BoostingClassification AccuracyCatBoostSupervisedIris DatasetSymmetric Gradient BoostingClassification AccuracyK-MeansUnsupervisedSynthetic (make_blobs)Centroid ClusteringMatplotlib Visual Scatter PlotQ-LearningReinforcement6-State Goal WorldValue/Policy OptimizationFinal Q-Table MatrixTransformerDeep LearningSynthetic Tensor InputsSelf-Attention MechanismContextual Attention Output Matrix🎯 Core Learning ObjectivesThis repository provides clear, minimal implementations to help you master the following practical concepts:Supervised Learning Fundamentals: Understanding classic supervised workflows, including train-test splitting, fitting, and evaluating both classification models (Accuracy) and regression models (MSE).Gradient Boosting Architectures: Comparing key differences in tree-building strategies across leading ensemble frameworks (XGBoost, LightGBM, and CatBoost).Unsupervised Data Partitioning: Discovering underlying patterns and structural clusters without ground-truth targets using distance-based centroids (K-Means).Reinforcement Learning Dynamics: Implementing agent-environment feedback loops, state-action reward functions, and the Bellman equation to optimize policies (Q-Learning).Attention Mechanisms in PyTorch: Implementing Scaled Dot-Product Attention ($\text{softmax}(QK^T / \sqrt{d_k})V$) from scratch without heavy, pretrained model dependencies.Practical Model Execution: Running lightweight ML code efficiently on low-resource environments (under 4 GB RAM / CPU-only configurations).
