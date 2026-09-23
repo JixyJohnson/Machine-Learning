@@ -145,7 +145,8 @@ You can tweak the experiment settings inside semi_supervised_demo.py by modifyin
 * CONFIDENCE_THRESHOLD = 0.90: The minimum prediction probability required for an unlabeled sample to receive a pseudo-label.
 * RANDOM_STATE = 42: Ensures consistency and reproducibility across runs.
 ------------------------------
-## Core Component Logic## Pseudo-Labeling Strategy
+## Core Component Logic
+### Pseudo-Labeling Strategy
 ### Unlabeled samples get pseudo-labels if they clear the threshold.
 probabilities = model.predict_proba(X_unlabeled_scaled)
 confident_mask = np.max(probabilities, axis=1) >= CONFIDENCE_THRESHOLD
