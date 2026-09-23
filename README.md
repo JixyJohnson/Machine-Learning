@@ -147,7 +147,7 @@ You can tweak the experiment settings inside semi_supervised_demo.py by modifyin
 ------------------------------
 ## Core Component Logic
 ### Pseudo-Labeling Strategy
-### Unlabeled samples get pseudo-labels if they clear the threshold.
+## Unlabeled samples get pseudo-labels if they clear the threshold.
 probabilities = model.predict_proba(X_unlabeled_scaled)
 confident_mask = np.max(probabilities, axis=1) >= CONFIDENCE_THRESHOLD
 
