@@ -112,12 +112,6 @@ The project demonstrates and compares three distinct approaches:
    3. Co-Training Demonstration: Splits features into two distinct "views" (Sepal measurements vs. Petal measurements). Two separate models learn independently and exchange high-confidence pseudo-labels to teach one another before making a combined ensemble prediction.
 
 ------------------------------
-## Directory Structure
-
-├── semi_supervised_demo.py     # Main Python demonstration script
-└── iris_dataset.csv            # Target Iris dataset (Required)
-
-------------------------------
 ## Prerequisites
 Ensure you have Python installed along with the required scientific computing and machine learning libraries.
 ## Installation
