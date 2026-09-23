@@ -126,7 +126,7 @@ Install the necessary dependencies using pip:
 pip install numpy pandas scikit-learn
 
 ------------------------------
-## Getting Started## 1. Data Requirements
+## 1. Data Requirements
 The script expects a file named iris_dataset.csv in the same directory as the script. It must contain the following schema:
 
 * Features: sepal length (cm), sepal width (cm), petal length (cm), petal width (cm)
@@ -148,10 +148,17 @@ You can tweak the experiment settings inside semi_supervised_demo.py by modifyin
 ------------------------------
 ## Core Component Logic## Pseudo-Labeling Strategy
 
-# Unlabeled samples are assigned pseudo-labels if they clear the confidence thresholdprobabilities = model.predict_proba(X_unlabeled_scaled)confident_mask = np.max(probabilities, axis=1) >= CONFIDENCE_THRESHOLD
+# Unlabeled samples are assigned pseudo-labels if they clear the confidence threshold
+probabilities = model.predict_proba(X_unlabeled_scaled)
+confident_mask = np.max(probabilities, axis=1) >= CONFIDENCE_THRESHOLD
+
 
 ## Co-Training Feature Split
 
-# View 1: Sepal Measurementsview1_labeled = X_labeled[:, :2]# View 2: Petal Measurementsview2_labeled = X_labeled[:, 2:]
+# View 1: Sepal Measurements
+view1_labeled = X_labeled[:, :2]
+# View 2: Petal Measurements
+view2_labeled = X_labeled[:, 2:]
+
 
 
