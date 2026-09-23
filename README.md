@@ -144,20 +144,17 @@ You can tweak the experiment settings inside semi_supervised_demo.py by modifyin
 * LABELED_FRACTION = 0.20: Controls the proportion of training data that retains its true labels (simulating data scarcity).
 * CONFIDENCE_THRESHOLD = 0.90: The minimum prediction probability required for an unlabeled sample to receive a pseudo-label.
 * RANDOM_STATE = 42: Ensures consistency and reproducibility across runs.
-
 ------------------------------
 ## Core Component Logic## Pseudo-Labeling Strategy
-
-# Unlabeled samples are assigned pseudo-labels if they clear the confidence threshold
+### Unlabeled samples get pseudo-labels if they clear the threshold.
 probabilities = model.predict_proba(X_unlabeled_scaled)
 confident_mask = np.max(probabilities, axis=1) >= CONFIDENCE_THRESHOLD
 
 
 ## Co-Training Feature Split
-
-# View 1: Sepal Measurements
+#### View 1: Sepal Measurements
 view1_labeled = X_labeled[:, :2]
-# View 2: Petal Measurements
+#### View 2: Petal Measurements
 view2_labeled = X_labeled[:, 2:]
 
 
