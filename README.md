@@ -102,3 +102,56 @@ This project demonstrates practical implementations of:
 
 The examples are intentionally simple so that the underlying concepts and code flow can be understood easily.
 
+## Semi-Supervised Learning Demo
+A Python demonstration highlighting foundational Semi-Supervised Learning (SSL) techniques using the classic Iris dataset. The script simulates a real-world scenario where labeled data is scarce (only 20% available) and unlabeled data is abundant.
+## Features
+The project demonstrates and compares three distinct approaches:
+
+   1. Supervised Baseline: Trains a standard LogisticRegression model strictly on the limited labeled partition.
+   2. Pseudo-Labeling (Self-Training): Trains an initial model on labeled data, assigns pseudo-labels to unlabeled samples meeting a high confidence threshold (≥ 90%), combines both sets, and retrains a final model.
+   3. Co-Training Demonstration: Splits features into two distinct "views" (Sepal measurements vs. Petal measurements). Two separate models learn independently and exchange high-confidence pseudo-labels to teach one another before making a combined ensemble prediction.
+
+------------------------------
+## Directory Structure
+
+├── semi_supervised_demo.py     # Main Python demonstration script
+└── iris_dataset.csv            # Target Iris dataset (Required)
+
+------------------------------
+## Prerequisites
+Ensure you have Python installed along with the required scientific computing and machine learning libraries.
+## Installation
+Install the necessary dependencies using pip:
+
+pip install numpy pandas scikit-learn
+
+------------------------------
+## Getting Started## 1. Data Requirements
+The script expects a file named iris_dataset.csv in the same directory as the script. It must contain the following schema:
+
+* Features: sepal length (cm), sepal width (cm), petal length (cm), petal width (cm)
+* Target: target (Integer class labels)
+
+## 2. Running the Code
+Execute the demonstration using your terminal or through VS Code:
+
+python semi_supervised_demo.py
+
+------------------------------
+## Configuration
+You can tweak the experiment settings inside semi_supervised_demo.py by modifying the global constants:
+
+* LABELED_FRACTION = 0.20: Controls the proportion of training data that retains its true labels (simulating data scarcity).
+* CONFIDENCE_THRESHOLD = 0.90: The minimum prediction probability required for an unlabeled sample to receive a pseudo-label.
+* RANDOM_STATE = 42: Ensures consistency and reproducibility across runs.
+
+------------------------------
+## Core Component Logic## Pseudo-Labeling Strategy
+
+# Unlabeled samples are assigned pseudo-labels if they clear the confidence thresholdprobabilities = model.predict_proba(X_unlabeled_scaled)confident_mask = np.max(probabilities, axis=1) >= CONFIDENCE_THRESHOLD
+
+## Co-Training Feature Split
+
+# View 1: Sepal Measurementsview1_labeled = X_labeled[:, :2]# View 2: Petal Measurementsview2_labeled = X_labeled[:, 2:]
+
+
